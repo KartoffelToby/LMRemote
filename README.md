@@ -4,8 +4,8 @@
 
 ### Requiremenst
 - Raspberry PI (all Versions)
-- LED - Stips (WS2801 etc..)
 - Internet Connection (Wifi)
+- LED - Stips (WS2801 etc..)
 
 1. Download the img File
 2. write the Image File to your SD-Card
