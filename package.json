@@ -1,0 +1,16 @@
+{
+  "name": "lmremote",
+  "version": "1.4.0",
+  "description": "Light",
+  "main": "LMRServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tobias Haber",
+  "license": "ISC",
+  "dependencies": {
+    "hyperion-client": "^1.0.0",
+    "socket.io": "^1.3.7",
+    "tap": "^2.3.2"
+  }
+}
