@@ -8,10 +8,12 @@
 ## Easy Install
 
 ### Requiremenst
+
 - Raspberry PI (all Versions)
 - Internet Connection (Wifi)
 - LED - Stips (WS2801 etc..)
 
+### How TO
 1. Download the img File
 2. write the Image File to your SD-Card
 3. Boot your PI with a Wired Network Connection
@@ -26,7 +28,6 @@
 
 ---
 ## Advanced Install
-
 
 ### Requiremenst
 
