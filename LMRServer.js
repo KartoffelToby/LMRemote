@@ -374,7 +374,7 @@ var Effects = {
 		var baseColorRangeLeft = 0.0;
 		var baseColorRangeRight = 360.0;
 		var baseColorChangeIncreaseValue = 1.0 / 360.0;
-		var baseHSVValue = 100;
+		var baseHSVValue = 198;
 		var blobs = 4;
 		var colors = Array(maxLED);
 		var amplitudePhaseIncrement = blobs * Math.PI * 0.1 / 20.0;
@@ -385,7 +385,7 @@ var Effects = {
 					for (var i = 0; i <= maxLED; i++) {
 						var baseHSVValue = (baseHSVValue + baseColorChangeIncreaseValue) % 1.0;
 						var hue = (baseHSVValue + hueChange * Math.sin(2*Math.PI * i / maxLED)) % 1.0;
-                		var rgb = hsvToRgb(198, 73, 80);
+                		var rgb = hsvToRgb(hue, 73, 80);
                 		tempColor.push(rgb[0]);
                 		tempColor.push(rgb[1]);
                 		tempColor.push(rgb[2]);
@@ -398,7 +398,7 @@ var Effects = {
 					}
 					ledController.sendRgbBuffer(colors);
 					amplitudePhase = (amplitudePhase + amplitudePhaseIncrement) % (2*Math.PI);
-		},10);
+		},8);
 	},
 	notify : function(color){
 		var half = maxLED / 2;
