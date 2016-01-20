@@ -9,7 +9,7 @@
   "author": "Tobias Haber",
   "license": "ISC",
   "dependencies": {
-    "hyperion-client": "^1.0.0",
+    "rpi-ws2801": "0.0.4",
     "socket.io": "^1.3.7",
     "tap": "^2.3.2"
   }
