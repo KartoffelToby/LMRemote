@@ -389,9 +389,10 @@ var Effects = {
 		for (var i = maxLED; i >= 0; i--) {
 			var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
 			console.log(amplitude);
-			tempColor.push(set[0]);
-			tempColor.push(set[1]);
-			tempColor.push(set[2]);
+			îf(amplitude < 0) counter = counter+2;
+			tempColor.push(set[0+counter]);
+			tempColor.push(set[1+counter]);
+			tempColor.push(set[2+counter]);
 		}
 		interval = setInterval(function(){
 					for (var i = maxLED; i >= 0; i--) {
