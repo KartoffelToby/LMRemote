@@ -387,7 +387,7 @@ var Effects = {
 						tempColor.push(set[2+counter]);
 						if(i >= splitter){
 							counter = counter+3;
-							splitter=splitter+splitter+(3*i);
+							splitter=splitter+splitter+i;
 						} 
 						if(splitter >= maxLED){
 							splitter = maxLED/(blobs*2);
@@ -401,7 +401,7 @@ var Effects = {
 					}
 					ledController.sendRgbBuffer(colors);
 					amplitudePhase = (amplitudePhase + amplitudePhaseIncrement) % (2*Math.PI);
-		},5);
+		},10);
 	},
 	notify : function(color){
 		var half = maxLED / 2;
