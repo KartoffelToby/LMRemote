@@ -384,8 +384,8 @@ var Effects = {
 		interval = setInterval(function(){
 					for (var i = 0; i <= maxLED; i++) {
 						var baseHSVValue = (baseHSVValue + baseColorChangeIncreaseValue) % 1.0;
-						var hue = (baseHSVValue + hueChange * Math.sin(2*Math.PI * i / maxLED)) % 1.0
-                		var rgb = hsvToRgb(hue, baseHsv[1], baseHsv[2])
+						var hue = (baseHSVValue + hueChange * Math.sin(2*Math.PI * i / maxLED)) % 1.0;
+                		var rgb = hsvToRgb(198, 73, 80);
                 		tempColor.push(rgb[0]);
                 		tempColor.push(rgb[1]);
                 		tempColor.push(rgb[2]);
