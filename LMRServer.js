@@ -398,6 +398,8 @@ var Effects = {
 					}
 					ledController.sendRgbBuffer(colors);
 					amplitudePhase = (amplitudePhase + amplitudePhaseIncrement) % (2*Math.PI);
+					tempColor = [];
+					colors = [];
 		},8);
 	},
 	notify : function(color){
