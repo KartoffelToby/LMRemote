@@ -3,7 +3,6 @@
 
 "use strict";
 
-var Hyperion = require('hyperion-client');
 var SunCalc = require('./suncalc');
 var t = require('tap');
 var app = require('http').createServer();
@@ -31,11 +30,6 @@ process.on( 'SIGINT', function() {
   ledController.disconnect();
   process.exit( )
 })
-
-// LED CONNECTION
-var hyperion = new Hyperion('127.0.0.1', 19444 );
-hyperion.on('connect', function(){});
-hyperion.on('error', function(error){});
 
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
