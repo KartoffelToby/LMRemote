@@ -367,13 +367,7 @@ var Effects = {
 		var rotateColors = false;
 		var baseColorChangeStepCount = 0;
 		var baseHSVValue = 1;
-		var tempArray = Array();
 		var tempColor = Array();
-		for (var i = maxLED; i >= 0; i--) {
-			tempColor.push(0);
-			tempColor.push(0);
-			tempColor.push(255);
-		}
 		var hueChange = 60;
 		var numberOfRotates = 0;
 		var baseColorChangeRate = 40;
@@ -386,16 +380,17 @@ var Effects = {
 		var splitter = maxLED/(blobs*2);
 		var set = [0,65,244,0,225,255,163,255,210,0,255,178,0,255,89];
 		var counter = 0;
-		for (var i = 0; i <= maxLED; i++) {
-			if(i >= splitter){
-				counter = counter+2;
-				splitter=splitter+splitter;
-			} 
-			tempColor.push(set[0+counter]);
-			tempColor.push(set[1+counter]);
-			tempColor.push(set[2+counter]);
-		}
 		interval = setInterval(function(){
+					for (var i = 0; i <= maxLED; i++) {
+						var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
+						if(i >= splitter){
+							counter = counter+2;
+							splitter=splitter+splitter;
+						} 
+						tempColor.push(set[0+counter] * amplitude);
+						tempColor.push(set[1+counter] * amplitude);
+						tempColor.push(set[2+counter] * amplitude);
+					}
 					for (var i = maxLED; i >= 0; i--) {
 						var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
 						colors[3*i+0] = (parseInt(tempColor[3*i+0] * amplitude));
@@ -404,8 +399,6 @@ var Effects = {
 					}
 					ledController.sendRgbBuffer(colors);
 					amplitudePhase = (amplitudePhase + amplitudePhaseIncrement) % (2*Math.PI);
-					tempArray = tempColor;
-					//baseColorChangeStepCount++;
 		},8);
 	},
 	notify : function(color){
