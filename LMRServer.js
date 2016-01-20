@@ -382,17 +382,16 @@ var Effects = {
 		var counter = 0;
 		interval = setInterval(function(){
 					for (var i = 0; i <= maxLED; i++) {
-						var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
 						if(i >= splitter){
 							counter = counter+2;
 							splitter=splitter+splitter;
 						} 
-						tempColor.push(set[0+counter] * amplitude);
-						tempColor.push(set[1+counter] * amplitude);
-						tempColor.push(set[2+counter] * amplitude);
+						tempColor.push(set[0+counter]);
+						tempColor.push(set[1+counter]);
+						tempColor.push(set[2+counter]);
 					}
 					for (var i = maxLED; i >= 0; i--) {
-						var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
+						var amplitude = Math.max(0.0,Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED));
 						colors[3*i+0] = (parseInt(tempColor[3*i+0] * amplitude));
 						colors[3*i+1] = (parseInt(tempColor[3*i+1] * amplitude));
 						colors[3*i+2] = (parseInt(tempColor[3*i+2] * amplitude));
