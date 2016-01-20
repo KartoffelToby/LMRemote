@@ -382,8 +382,10 @@ var Effects = {
 		var baseColorChangeIncreaseValue = 1.0 / 360.0;
 		var blobs = 4;
 		var colors = Array(maxLED);
+		var amplitudePhaseIncrement = blobs * Math.PI * 0.1 / 20.0;
 		var set = [0,65,244,0,225,255,163,255,210,0,255,178,0,255,89];
 		var counter = 0;
+		var amplitudePhase = (amplitudePhase + amplitudePhaseIncrement) % (2*Math.PI);
 		for (var i = maxLED; i >= 0; i--) {
 			var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
 			console.log(amplitude);
