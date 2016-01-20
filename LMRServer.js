@@ -10,17 +10,14 @@ var app = require('http').createServer();
 var io = require('socket.io')(app);
 var ledController = require("rpi-ws2801");
 var colorLight = function(c,n,i,d){for(i=3;i--;c[i]=d<0?0:d>255?255:d|0)d=c[i]+n;return c}
-var Gradient = require('gradient');
 
 // VARs
 var currentColor = {"r":0,"g":0,"b":0};
-//var defaultColor = {"r":255,"g":255,"b":255};
 var defaultColor = [255,255,255];
 var darkTimer,lightTimer,isDark,isLight;
 var firstRun = false;
 var maxLED = 192;
 ledController.connect(maxLED);
-//ledController.gamma(2.1000,2.0000,2.0000);
 var interval;
 var toggle = true;
 var lat = 49.5121;
@@ -42,27 +39,6 @@ hyperion.on('error', function(error){});
 
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
-/*
-var color = Color().rgb(255, 255, 255);
-for (var i = 0; i <= 100; i++) {
-	var temp = parseFloat(i /100);
-	console.log(temp);
-	console.log(color.darken(temp).red());
-	console.log(color.darken(temp).green());
-	console.log(color.darken(temp).blue());
-};
-
-
-var clockTimer = setInterval(function(){
-	if(sunset.getTime() <= new Date().getTime()){
-		console.log("hallo");
-	}else{
-		console.log('No');
-	}
-},60000);
-*/
-
-
 console.log(times.sunset);
 
 // APP CONNECTION
@@ -266,28 +242,20 @@ function hsvToRgb(h, s, v) {
 	var r, g, b;
 	var i;
 	var f, p, q, t;
- 
-	// Make sure our arguments stay in-range
-	h = Math.max(0, Math.min(360, h));
+ 	h = Math.max(0, Math.min(360, h));
 	s = Math.max(0, Math.min(100, s));
 	v = Math.max(0, Math.min(100, v));
- 
-	// We accept saturation and value arguments from 0 to 100 because that's
-	// how Photoshop represents those values. Internally, however, the
-	// saturation and value are calculated from a range of 0 to 1. We make
-	// That conversion here.
 	s /= 100;
 	v /= 100;
  
 	if(s == 0) {
-		// Achromatic (grey)
 		r = g = b = v;
 		return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 	}
  
-	h /= 60; // sector 0 to 5
+	h /= 60;
 	i = Math.floor(h);
-	f = h - i; // factorial part of h
+	f = h - i;
 	p = v * (1 - s);
 	q = v * (1 - s * f);
 	t = v * (1 - s * (1 - f));
@@ -323,7 +291,7 @@ function hsvToRgb(h, s, v) {
 			b = v;
 			break;
  
-		default: // case 5:
+		default:
 			r = v;
 			g = p;
 			b = q;
@@ -341,11 +309,9 @@ function hex (c) {
   return s.charAt ((i - i % 16) / 16) + s.charAt (i % 16);
 }
 
-/* Convert an RGB triplet to a hex string */
 function convertToHex (rgb) {
   return hex(rgb[0]) + hex(rgb[1]) + hex(rgb[2]);
 }
-
 
 function trim (s) { return (s.charAt(0) == '#') ? s.substring(1, 7) : s }
 
@@ -355,38 +321,6 @@ function convertToRGB (hex) {
   color[1] = parseInt ((trim(hex)).substring (2, 4), 16);
   color[2] = parseInt ((trim(hex)).substring (4, 6), 16);
   return color;
-}
-
-function generateColor(colorStart,colorEnd,colorCount){
-
-	// The beginning of your gradient
-	var start = convertToRGB (colorStart);    
-
-	// The end of your gradient
-	var end   = convertToRGB (colorEnd);    
-
-	// The number of colors to compute
-	var len = colorCount;
-
-	//Alpha blending amount
-	var alpha = 1.0;
-
-	var saida = [];
-	
-	for (var i = 0; i < len; i++) {
-		var c = [];
-		alpha += (1.0/len);
-		
-		c[0] = start[0] * alpha + (1 - alpha) * end[0];
-		c[1] = start[1] * alpha + (1 - alpha) * end[1];
-		c[2] = start[2] * alpha + (1 - alpha) * end[2];
-
-		saida.push(parseInt(convertToRGB(convertToHex (c)).toString()));
-		
-	}
-	
-	return saida;
-	
 }
 
 // EFFECT FUNCTIONS
@@ -457,10 +391,6 @@ var Effects = {
 		var hsv = rgb2hsv(0,0,255);
 		var baseHSVValue = hsv.h;
 		var amplitudePhaseIncrement = blobs * Math.PI * 0.1 / 20.0;
-		var grad = Gradient('#303F9F', '#3F51B5', '#009688','#E91E63','#8BC34A','#2196F3', maxLED);
-		var tempRGB = grad.toArray('rgbArray');
-		var merged = [].concat.apply([], tempRGB);
-		tempColor = merged;
 		interval = setInterval(function(){
 					if(baseColorChangeStepCount >= baseColorChangeRate){
 						baseColorChangeStepCount = 0;
