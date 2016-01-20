@@ -380,29 +380,18 @@ var Effects = {
 		var baseColorRangeLeft = 0.0;
 		var baseColorRangeRight = 360.0;
 		var baseColorChangeIncreaseValue = 1.0 / 360.0;
-		var blobs = 5;
+		var blobs = 4;
 		var colors = Array(maxLED);
-		var hsv = rgb2hsv(0,0,255);
-		var baseHSVValue = hsv.h;
-		var amplitudePhaseIncrement = blobs * Math.PI * 0.1 / 20.0;
+		var set = [0,65,244,0,225,255,163,255,210,0,255,178,0,255,89];
+		var counter = 0;
+		for (var i = maxLED; i >= 0; i--) {
+			var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
+			console.log(amplitude);
+			tempColor.push(set[0]);
+			tempColor.push(set[1]);
+			tempColor.push(set[2]);
+		}
 		interval = setInterval(function(){
-					if(baseColorChangeStepCount >= baseColorChangeRate){
-						baseColorChangeStepCount = 0;
-						tempColor = [];
-		                if(baseColorChangeIncreaseValue < 0 && baseHSVValue > baseColorRangeLeft && (baseHSVValue + baseColorChangeIncreaseValue) <= baseColorRangeLeft){
-		                    baseColorChangeIncreaseValue = abs(baseColorChangeIncreaseValue);
-		                }else if(baseColorChangeIncreaseValue > 0 && baseHSVValue < baseColorRangeRight && (baseHSVValue + baseColorChangeIncreaseValue)  >= baseColorRangeRight){
-                    		baseColorChangeIncreaseValue = -Math.abs(baseColorChangeIncreaseValue);
-		                }
-                	baseHSVValue = (baseHSVValue + baseColorChangeIncreaseValue) % 1.0;
-                	for (var i = maxLED; i >= 0; i--) {
-							var hue = (baseHSVValue + hueChange * Math.sin(2*Math.PI * i / maxLED)) % 1;
-							var rgb = hsvToRgb(hue, hsv.s, hsv.v);
-							tempColor.push(rgb[0]);
-							tempColor.push(rgb[1]);
-							tempColor.push(rgb[2]);
-						}
-					}
 					for (var i = maxLED; i >= 0; i--) {
 						var amplitude = Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED);
 						colors[3*i+0] = (parseInt(tempColor[3*i+0] * amplitude));
