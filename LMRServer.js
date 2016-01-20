@@ -382,13 +382,13 @@ var Effects = {
 		var counter = 0;
 		interval = setInterval(function(){
 					for (var i = 0; i <= maxLED; i++) {
+						tempColor.push(set[0+counter]);
+						tempColor.push(set[1+counter]);
+						tempColor.push(set[2+counter]);
 						if(i >= splitter){
 							counter = counter+2;
 							splitter=splitter+splitter;
 						} 
-						tempColor.push(set[0+counter]);
-						tempColor.push(set[1+counter]);
-						tempColor.push(set[2+counter]);
 					}
 					for (var i = maxLED; i >= 0; i--) {
 						var amplitude = Math.max(0.0,Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED));
