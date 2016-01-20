@@ -374,6 +374,7 @@ var Effects = {
 		var baseColorRangeLeft = 0.0;
 		var baseColorRangeRight = 360.0;
 		var baseColorChangeIncreaseValue = 1.0 / 360.0;
+		var baseHSVValue = 100;
 		var blobs = 4;
 		var colors = Array(maxLED);
 		var amplitudePhaseIncrement = blobs * Math.PI * 0.1 / 20.0;
@@ -382,16 +383,12 @@ var Effects = {
 		var counter = 0;
 		interval = setInterval(function(){
 					for (var i = 0; i <= maxLED; i++) {
-						tempColor.push(set[0+counter]);
-						tempColor.push(set[1+counter]);
-						tempColor.push(set[2+counter]);
-						if(i >= splitter){
-							counter = counter+3;
-							splitter=splitter+splitter+i;
-						} 
-						if(splitter >= maxLED){
-							splitter = maxLED/(blobs*2);
-						}
+						var baseHSVValue = (baseHSVValue + baseColorChangeIncreaseValue) % 1.0;
+						var hue = (baseHSVValue + hueChange * Math.sin(2*Math.PI * i / maxLED)) % 1.0
+                		var rgb = hsvToRgb(hue, baseHsv[1], baseHsv[2])
+                		tempColor.push(rgb[0]);
+                		tempColor.push(rgb[1]);
+                		tempColor.push(rgb[2]);
 					}
 					for (var i = maxLED; i >= 0; i--) {
 						var amplitude = Math.max(0.0,Math.sin(-amplitudePhase + 2*Math.PI * blobs * i / maxLED));
