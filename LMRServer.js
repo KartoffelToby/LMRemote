@@ -15,7 +15,7 @@ var currentColor = {"r":0,"g":0,"b":0};
 var defaultColor = [255,255,255];
 var darkTimer,lightTimer,isDark,isLight;
 var firstRun = false;
-var maxLED = 192;
+var maxLED = 158;
 ledController.connect(maxLED);
 var interval;
 var toggle = true;
@@ -98,6 +98,50 @@ var LMRemote = {
 			case "nightsky":
 				Effects.nightsky();
 				break;
+			case "array":
+				setTimeout(function(){
+					var temp = data.array;
+					var multiplikator = Math.round(maxLED/4)*3;
+					var colorBuffer = new Buffer(ledController.getChannelCount());
+					if(temp != 2) {
+						if (temp == 0) {
+							for (var i = 0; i < multiplikator; i+=3) {
+								colorBuffer[i] = 0;
+								colorBuffer[i+1] = 0;
+								colorBuffer[i+2] = 0;
+							}
+						}
+						else if (temp == 4 || temp == 6 || temp == 8) {
+							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
+								colorBuffer[i] = 255;
+								colorBuffer[i+1] = 0;
+								colorBuffer[i+2] = 0;
+							}
+						}
+						else if (finalTest >= 12 && finalTest <= 15) {
+							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
+								colorBuffer[i] = 0;
+								colorBuffer[i+1] = 255;
+								colorBuffer[i+2] = 0;
+							}
+						}
+						else if (finalTest > 15 && finalTest < 80) {
+							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
+								colorBuffer[i] = 0;
+								colorBuffer[i+1] = 0;
+								colorBuffer[i+2] = 255;
+							}
+						}
+						else if (finalTest > 90) {
+							for (var i = (multiplikator*4); i < (multiplikator*4); i+=3) {
+								colorBuffer[i] = 255;
+								colorBuffer[i+1] = 255;
+								colorBuffer[i+2] = 255;
+							}
+						}
+					}
+					ledController.sendRgbBuffer(colorBuffer);
+				},5);
 			default:
 				this.clearAll();
 				break;
@@ -341,6 +385,25 @@ var Effects = {
 		},5);
 	},
 	clock : function(){
+		var fireColor = [255,215,40];
+		var ledData = Array();
+		interval = setInterval(function(){
+			ledData = [];
+			for (var x = 0; x < maxLED; x++){
+				var flicker = Tools.randomInt(0,150);
+				var r1 = fireColor[0]-flicker;
+				var g1 = fireColor[1]-flicker;
+				var b1 = fireColor[2]-flicker;
+				if(g1<0) g1=0;
+				if(r1<0) r1=0;
+				if(b1<0) b1=0;
+				ledData.push(r1);
+				ledData.push(g1);
+				ledData.push(b1);
+			} 
+			ledController.sendRgbBuffer(ledData);
+		}, Tools.randomInt(50,150));
+		/*
 		var leds = maxLED / 60;
 		var current = 0;
 		interval = setInterval(function() {
@@ -361,6 +424,7 @@ var Effects = {
 			current = current+leds;
 			LMRemote.sendColor(false,byteArray, function( err, result ){});
 		},1000);
+		*/
 	},
 	mood : function(){
 		var amplitudePhase = 0.0;
