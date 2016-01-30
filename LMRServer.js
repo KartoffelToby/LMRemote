@@ -31,7 +31,7 @@ process.on( 'SIGINT', function() {
   process.exit( )
 })
 var multiplikator = Math.round(maxLED/4)*3;
-var musicArray = Array(multiplikator*4);
+var musicArray = new Buffer(multiplikator*4);
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
 console.log(times.sunset);
@@ -109,6 +109,7 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 					}*/
+					console.log(temp);
 					if (temp >= 20 && temp <= 40) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
 							musicArray[i] = 0;
@@ -120,14 +121,7 @@ var LMRemote = {
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
-						currentColor = musicArray;
-						if(!colorChange){
-							colorChange = true;
-							LMRemote.sendColor(true,musicArray, function(result){
-								LMRemote.sendColor(true,currentColor, function(){});
-								colorChange = false;
-							});
-						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					else if (temp >= 100 && temp <= 150) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -140,14 +134,7 @@ var LMRemote = {
 							musicArray[i+1] = 255;
 							musicArray[i+2] = 0;
 						}
-						currentColor = musicArray;
-						if(!colorChange){
-							colorChange = true;
-							LMRemote.sendColor(true,musicArray, function(result){
-								LMRemote.sendColor(true,currentColor, function(){});
-								colorChange = false;
-							});
-						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					else if (temp >= 1000 && temp <= 2000) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -160,6 +147,7 @@ var LMRemote = {
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 255;
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					else if (temp >= 3500 && temp <= 6000) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -172,9 +160,10 @@ var LMRemote = {
 							musicArray[i+1] = 255;
 							musicArray[i+2] = 255;
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					//ledController.sendRgbBuffer(musicArray);
-				},5);
+				},10);
 			default:
 				this.clearAll();
 				break;
