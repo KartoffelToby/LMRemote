@@ -30,7 +30,8 @@ process.on( 'SIGINT', function() {
   ledController.disconnect();
   process.exit( )
 })
-
+var multiplikator = Math.round(maxLED/4)*3;
+var musicArray = new Buffer(multiplikator*4);
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
 console.log(times.sunset);
@@ -101,48 +102,44 @@ var LMRemote = {
 			case "array":
 				setTimeout(function(){
 					var temp = data.array;
-					var multiplikator = Math.round(maxLED/4)*3;
-					var colorBuffer = new Buffer(ledController.getChannelCount());
-					console.log(colorBuffer);
-					console.log(multiplikator);
 					if(temp != 2) {
 						if (temp == 0) {
-							for (var i = 0; i < multiplikator; i+=3) {
-								colorBuffer[i] = 0;
-								colorBuffer[i+1] = 0;
-								colorBuffer[i+2] = 0;
+							for (var i = 0; i < multiplikator*4; i+=3) {
+								musicArray[i] = 0;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 0;
 							}
 						}
 						else if (temp == 4 || temp == 6 || temp == 8) {
 							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
-								colorBuffer[i] = 255;
-								colorBuffer[i+1] = 0;
-								colorBuffer[i+2] = 0;
+								musicArray[i] = 255;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 0;
 							}
 						}
 						else if (temp >= 12 && temp <= 15) {
 							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
-								colorBuffer[i] = 0;
-								colorBuffer[i+1] = 255;
-								colorBuffer[i+2] = 0;
+								musicArray[i] = 0;
+								musicArray[i+1] = 255;
+								musicArray[i+2] = 0;
 							}
 						}
 						else if (temp > 15 && temp < 80) {
 							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
-								colorBuffer[i] = 0;
-								colorBuffer[i+1] = 0;
-								colorBuffer[i+2] = 255;
+								musicArray[i] = 0;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 255;
 							}
 						}
 						else if (temp > 90) {
 							for (var i = (multiplikator*4); i < (multiplikator*4); i+=3) {
-								colorBuffer[i] = 255;
-								colorBuffer[i+1] = 255;
-								colorBuffer[i+2] = 255;
+								musicArray[i] = 255;
+								musicArray[i+1] = 255;
+								musicArray[i+2] = 255;
 							}
 						}
 					}
-					ledController.sendRgbBuffer(colorBuffer);
+					ledController.sendRgbBuffer(musicArray);
 				},5);
 			default:
 				this.clearAll();
