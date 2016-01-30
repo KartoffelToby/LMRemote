@@ -103,6 +103,8 @@ var LMRemote = {
 					var temp = data.array;
 					var multiplikator = Math.round(maxLED/4)*3;
 					var colorBuffer = new Buffer(ledController.getChannelCount());
+					console.log(colorBuffer);
+					console.log(multiplikator);
 					if(temp != 2) {
 						if (temp == 0) {
 							for (var i = 0; i < multiplikator; i+=3) {
@@ -118,21 +120,21 @@ var LMRemote = {
 								colorBuffer[i+2] = 0;
 							}
 						}
-						else if (finalTest >= 12 && finalTest <= 15) {
+						else if (temp >= 12 && temp <= 15) {
 							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
 								colorBuffer[i] = 0;
 								colorBuffer[i+1] = 255;
 								colorBuffer[i+2] = 0;
 							}
 						}
-						else if (finalTest > 15 && finalTest < 80) {
+						else if (temp > 15 && temp < 80) {
 							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
 								colorBuffer[i] = 0;
 								colorBuffer[i+1] = 0;
 								colorBuffer[i+2] = 255;
 							}
 						}
-						else if (finalTest > 90) {
+						else if (temp > 90) {
 							for (var i = (multiplikator*4); i < (multiplikator*4); i+=3) {
 								colorBuffer[i] = 255;
 								colorBuffer[i+1] = 255;
