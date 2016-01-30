@@ -106,7 +106,7 @@ var LMRemote = {
 			case "array":
 				setTimeout(function(){
 					var temp = data.array;
-					if(temp === -1){
+					if(temp === 0){
 						stacksG = 0;
 						stacksB = 0;
 						stacksW = 0;
