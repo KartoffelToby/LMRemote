@@ -150,7 +150,7 @@ var LMRemote = {
 							ledController.sendRgbBuffer(musicArray);
 						},100);
 					}
-					else if (temp >= 1200 && temp <= 1500) {
+					else if (temp >= 1000 && temp <= 1500) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
