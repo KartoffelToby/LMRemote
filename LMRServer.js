@@ -106,8 +106,7 @@ var LMRemote = {
 			case "array":
 				setTimeout(function(){
 					var temp = data.array;
-					console.log(temp);
-					if(temp === 0){
+					if(temp == 0){
 						stacksG = 0;
 						stacksB = 0;
 						stacksW = 0;
@@ -154,7 +153,7 @@ var LMRemote = {
 						stacksB = 0;
 						stacksW = 0;
 						stacksG++;
-						if(stacksG > 1){
+						if(stacksG > 2){
 							for (var i = 0; i < multiplikator*4; i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 0;
