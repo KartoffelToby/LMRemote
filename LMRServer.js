@@ -122,9 +122,9 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 						if(!colorChange){
-							this.clearAll();
+							LMRemote.clearAll();
 							colorChange = true;
-							this.sendColor(true,musicArray, function(result){
+							LMRemote.sendColor(true,musicArray, function(result){
 								LMRemote.sendColor(true,musicArray, function(){});
 								colorChange = false;
 							});
@@ -142,9 +142,9 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 						if(!colorChange){
-							this.clearAll();
+							LMRemote.clearAll();
 							colorChange = true;
-							this.sendColor(true,musicArray, function(result){
+							LMRemote.sendColor(true,musicArray, function(result){
 								LMRemote.sendColor(true,musicArray, function(){});
 								colorChange = false;
 							});
