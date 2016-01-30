@@ -109,7 +109,6 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 					}*/
-					console.log(temp);
 					if (temp >= 20 && temp <= 40) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
 							musicArray[i] = 0;
