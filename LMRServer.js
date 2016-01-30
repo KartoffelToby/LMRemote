@@ -140,7 +140,7 @@ var LMRemote = {
 						}
 					}
 					ledController.sendRgbBuffer(musicArray);
-				},20);
+				},1);
 			default:
 				this.clearAll();
 				break;
