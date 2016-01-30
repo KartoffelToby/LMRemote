@@ -124,12 +124,15 @@ var LMRemote = {
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
-						for (var i = multiplikator; i < (multiplikator*2); i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 255;
-							musicArray[i+2] = 0;
-						}
 						ledController.sendRgbBuffer(musicArray);
+						setTimeout(function(){
+							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
+								musicArray[i] = 0;
+								musicArray[i+1] = 255;
+								musicArray[i+2] = 0;
+							}
+							ledController.sendRgbBuffer(musicArray);
+						},25);
 					}
 					else if (temp >= 1000 && temp <= 2000) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -137,12 +140,15 @@ var LMRemote = {
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
-						for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 255;
-						}
 						ledController.sendRgbBuffer(musicArray);
+							setTimeout(function(){
+							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
+								musicArray[i] = 0;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 255;
+							}
+							ledController.sendRgbBuffer(musicArray);
+						},25);
 					}
 					else if (temp >= 3500 && temp <= 6000) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -150,15 +156,17 @@ var LMRemote = {
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
-						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
-							musicArray[i] = 255;
-							musicArray[i+1] = 255;
-							musicArray[i+2] = 255;
-						}
 						ledController.sendRgbBuffer(musicArray);
+						setTimeout(function(){
+							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
+								musicArray[i] = 255;
+								musicArray[i+1] = 255;
+								musicArray[i+2] = 255;
+							}
+							ledController.sendRgbBuffer(musicArray);
+						},25);
 					}
-					//ledController.sendRgbBuffer(musicArray);
-				},50);
+				},60);
 			default:
 				this.clearAll();
 				break;
