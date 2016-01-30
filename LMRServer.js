@@ -109,6 +109,7 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 					}*/
+					console.log(temp);
 					if (temp >= 20 && temp <= 40) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
 							musicArray[i] = 0;
@@ -158,7 +159,7 @@ var LMRemote = {
 						}
 					}
 					ledController.sendRgbBuffer(musicArray);
-				},100);
+				},5);
 			default:
 				this.clearAll();
 				break;
