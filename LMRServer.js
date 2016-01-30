@@ -102,26 +102,21 @@ var LMRemote = {
 			case "array":
 				setTimeout(function(){
 					var temp = data.array;
-					/*if (temp == 0) {
-						for (var i = 0; i < multiplikator*4; i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 0;
-						}
-					}*/
-					console.log(temp);
 					if (temp >= 20 && temp <= 40) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
-						for (var i = 0; i < multiplikator; i+=3) {
-							musicArray[i] = 255;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 0;
-						}
 						ledController.sendRgbBuffer(musicArray);
+						setTimeout(function(){
+							for (var i = 0; i < multiplikator; i+=3) {
+								musicArray[i] = 255;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 0;
+							}
+							ledController.sendRgbBuffer(musicArray);
+						}, 25);
 					}
 					else if (temp >= 100 && temp <= 150) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -163,7 +158,7 @@ var LMRemote = {
 						ledController.sendRgbBuffer(musicArray);
 					}
 					//ledController.sendRgbBuffer(musicArray);
-				},10);
+				},50);
 			default:
 				this.clearAll();
 				break;
