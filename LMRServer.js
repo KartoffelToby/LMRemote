@@ -31,7 +31,7 @@ process.on( 'SIGINT', function() {
   process.exit( )
 })
 var multiplikator = Math.round(maxLED/4)*3;
-var musicArray = Array(multiplikator*4);
+var musicArray = new Buffer(multiplikator*4);
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
 console.log(times.sunset);
@@ -157,8 +157,8 @@ var LMRemote = {
 							musicArray[i+2] = 255;
 						}
 					}
-					LMRemote.sendColor(true,musicArray,function(){});
-				},50);
+					ledController.sendRgbBuffer(musicArray);
+				},100);
 			default:
 				this.clearAll();
 				break;
