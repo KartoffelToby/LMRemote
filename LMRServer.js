@@ -32,6 +32,7 @@ process.on( 'SIGINT', function() {
 })
 var multiplikator = Math.round(maxLED/4)*3;
 var musicArray = new Buffer(multiplikator*4);
+var stacksR = 0;
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
 console.log(times.sunset);
@@ -103,20 +104,28 @@ var LMRemote = {
 				setTimeout(function(){
 					var temp = data.array;
 					if (temp >= 20 && temp <= 40) {
-						for (var i = 0; i < multiplikator*4; i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 0;
-						}
-						ledController.sendRgbBuffer(musicArray);
-						setTimeout(function(){
+						stacksR++;
+						if(stacksR > 5){
+							for (var i = 0; i < multiplikator*4; i+=3) {
+								musicArray[i] = 0;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 0;
+							}
+							for (var i = 0; i < multiplikator; i+=3) {
+								musicArray[i] = Tools.randomInt(0,255);
+								musicArray[i+1] = Tools.randomInt(0,255);
+								musicArray[i+2] = Tools.randomInt(0,255);
+							}
+							ledController.sendRgbBuffer(musicArray);
+							stacksR = 0;
+						}else{
 							for (var i = 0; i < multiplikator; i+=3) {
 								musicArray[i] = 255;
 								musicArray[i+1] = 0;
 								musicArray[i+2] = 0;
 							}
 							ledController.sendRgbBuffer(musicArray);
-						}, 100);
+						}
 					}
 					else if (temp >= 100 && temp <= 150) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
@@ -166,7 +175,7 @@ var LMRemote = {
 							ledController.sendRgbBuffer(musicArray);
 						},100);
 					}
-				},200);
+				},10);
 			default:
 				this.clearAll();
 				break;
