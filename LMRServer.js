@@ -112,7 +112,7 @@ var LMRemote = {
 						stacksB = 0;
 						stacksW = 0;
 						stacksR = 0;
-						for (var i = 0; i < multiplikator; i+=3) {
+						for (var i = 0; i < multiplikator*4; i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
