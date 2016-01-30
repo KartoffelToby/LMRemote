@@ -32,6 +32,11 @@ process.on( 'SIGINT', function() {
 })
 var multiplikator = Math.round(maxLED/4)*3;
 var musicArray = new Buffer(multiplikator*4);
+for (var i = 0; i < multiplikator*4; i+=3) {
+	musicArray[i] = 0;
+	musicArray[i+1] = 0;
+	musicArray[i+2] = 0;
+}
 var stacksR = 0;
 var stacksG = 0;
 var stacksB = 0;
@@ -124,11 +129,6 @@ var LMRemote = {
 						stacksW = 0;
 						stacksR++;
 						if(stacksR > 1){
-							for (var i = 0; i < multiplikator*4; i+=3) {
-								musicArray[i] = 0;
-								musicArray[i+1] = 0;
-								musicArray[i+2] = 0;
-							}
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
@@ -153,12 +153,7 @@ var LMRemote = {
 						stacksB = 0;
 						stacksW = 0;
 						stacksG++;
-						if(stacksG > 2){
-							for (var i = 0; i < multiplikator*4; i+=3) {
-								musicArray[i] = 0;
-								musicArray[i+1] = 0;
-								musicArray[i+2] = 0;
-							}
+						if(stacksG > 1){
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
@@ -184,11 +179,6 @@ var LMRemote = {
 						stacksW = 0;
 						stacksB++;
 						if(stacksB > 1){
-							for (var i = 0; i < multiplikator*4; i+=3) {
-								musicArray[i] = 0;
-								musicArray[i+1] = 0;
-								musicArray[i+2] = 0;
-							}
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
@@ -214,11 +204,6 @@ var LMRemote = {
 						stacksR = 0;
 						stacksW++;
 						if(stacksW > 1){
-							for (var i = 0; i < multiplikator*4; i+=3) {
-								musicArray[i] = 0;
-								musicArray[i+1] = 0;
-								musicArray[i+2] = 0;
-							}
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
