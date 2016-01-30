@@ -109,7 +109,7 @@ var LMRemote = {
 					if (temp >= 20 && temp <= 40) {
 						stacksG = 0;
 						stacksR++;
-						if(stacksR > 5){
+						if(stacksR > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 0;
@@ -137,7 +137,7 @@ var LMRemote = {
 					else if (temp >= 100 && temp <= 150) {
 						stacksR = 0;
 						stacksG++;
-						if(stacksG > 5){
+						if(stacksG > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 0;
@@ -146,7 +146,7 @@ var LMRemote = {
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
-							for (var i = 0; i < multiplikator; i+=3) {
+							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
 								musicArray[i] = temp1;
 								musicArray[i+1] = temp2;
 								musicArray[i+2] = temp3;
@@ -166,7 +166,7 @@ var LMRemote = {
 						stacksR = 0;
 						stacksG = 0;
 						stacksB++;
-						if(stacksB > 5){
+						if(stacksB > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 0;
@@ -175,7 +175,7 @@ var LMRemote = {
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
-							for (var i = 0; i < multiplikator; i+=3) {
+							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
 								musicArray[i] = temp1;
 								musicArray[i+1] = temp2;
 								musicArray[i+2] = temp3;
@@ -196,7 +196,7 @@ var LMRemote = {
 						stacksG = 0;
 						stacksB = 0;
 						stacksW++;
-						if(stacksW > 5){
+						if(stacksW > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 0;
@@ -205,7 +205,7 @@ var LMRemote = {
 							var temp1 = Tools.randomInt(0,255);
 							var temp2 = Tools.randomInt(0,255);
 							var temp3 = Tools.randomInt(0,255);
-							for (var i = 0; i < multiplikator; i+=3) {
+							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
 								musicArray[i] = temp1;
 								musicArray[i+1] = temp2;
 								musicArray[i+2] = temp3;
