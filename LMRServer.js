@@ -122,7 +122,6 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 						if(!colorChange){
-							LMRemote.clearAll();
 							colorChange = true;
 							LMRemote.sendColor(true,musicArray, function(result){
 								LMRemote.sendColor(true,musicArray, function(){});
@@ -142,7 +141,6 @@ var LMRemote = {
 							musicArray[i+2] = 0;
 						}
 						if(!colorChange){
-							LMRemote.clearAll();
 							colorChange = true;
 							LMRemote.sendColor(true,musicArray, function(result){
 								LMRemote.sendColor(true,musicArray, function(){});
@@ -175,7 +173,7 @@ var LMRemote = {
 						}
 					}
 					//ledController.sendRgbBuffer(musicArray);
-				},5);
+				},500);
 			default:
 				this.clearAll();
 				break;
