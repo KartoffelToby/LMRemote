@@ -33,6 +33,7 @@ process.on( 'SIGINT', function() {
 var multiplikator = Math.round(maxLED/4)*3;
 var musicArray = new Buffer(multiplikator*4);
 var stacksR = 0;
+var stacksG = 0;
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
 console.log(times.sunset);
@@ -104,6 +105,7 @@ var LMRemote = {
 				setTimeout(function(){
 					var temp = data.array;
 					if (temp >= 20 && temp <= 40) {
+						stacksG = 0;
 						stacksR++;
 						if(stacksR > 5){
 							for (var i = 0; i < multiplikator*4; i+=3) {
@@ -111,10 +113,13 @@ var LMRemote = {
 								musicArray[i+1] = 0;
 								musicArray[i+2] = 0;
 							}
+							var temp1 = Tools.randomInt(0,255);
+							var temp2 = Tools.randomInt(0,255);
+							var temp3 = Tools.randomInt(0,255);
 							for (var i = 0; i < multiplikator; i+=3) {
-								musicArray[i] = Tools.randomInt(0,255);
-								musicArray[i+1] = Tools.randomInt(0,255);
-								musicArray[i+2] = Tools.randomInt(0,255);
+								musicArray[i] = temp1;
+								musicArray[i+1] = temp2;
+								musicArray[i+2] = temp3;
 							}
 							ledController.sendRgbBuffer(musicArray);
 							stacksR = 0;
@@ -128,20 +133,32 @@ var LMRemote = {
 						}
 					}
 					else if (temp >= 100 && temp <= 150) {
-						for (var i = 0; i < multiplikator*4; i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 0;
-						}
-						ledController.sendRgbBuffer(musicArray);
-						setTimeout(function(){
+						stacksR = 0;
+						stacksG++;
+						if(stacksG > 5){
+							for (var i = 0; i < multiplikator*4; i+=3) {
+								musicArray[i] = 0;
+								musicArray[i+1] = 0;
+								musicArray[i+2] = 0;
+							}
+							var temp1 = Tools.randomInt(0,255);
+							var temp2 = Tools.randomInt(0,255);
+							var temp3 = Tools.randomInt(0,255);
+							for (var i = 0; i < multiplikator; i+=3) {
+								musicArray[i] = temp1;
+								musicArray[i+1] = temp2;
+								musicArray[i+2] = temp3;
+							}
+							ledController.sendRgbBuffer(musicArray);
+							stacksG = 0;
+						}else{
 							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 255;
 								musicArray[i+2] = 0;
 							}
 							ledController.sendRgbBuffer(musicArray);
-						},100);
+						}
 					}
 					else if (temp >= 500 && temp <= 800) {
 						for (var i = 0; i < multiplikator*4; i+=3) {
