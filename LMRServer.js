@@ -121,10 +121,11 @@ var LMRemote = {
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
+						currentColor = musicArray;
 						if(!colorChange){
 							colorChange = true;
 							LMRemote.sendColor(true,musicArray, function(result){
-								LMRemote.sendColor(true,musicArray, function(){});
+								LMRemote.sendColor(true,currentColor, function(){});
 								colorChange = false;
 							});
 						}
@@ -140,10 +141,11 @@ var LMRemote = {
 							musicArray[i+1] = 255;
 							musicArray[i+2] = 0;
 						}
+						currentColor = musicArray;
 						if(!colorChange){
 							colorChange = true;
 							LMRemote.sendColor(true,musicArray, function(result){
-								LMRemote.sendColor(true,musicArray, function(){});
+								LMRemote.sendColor(true,currentColor, function(){});
 								colorChange = false;
 							});
 						}
@@ -173,7 +175,7 @@ var LMRemote = {
 						}
 					}
 					//ledController.sendRgbBuffer(musicArray);
-				},500);
+				},5);
 			default:
 				this.clearAll();
 				break;
