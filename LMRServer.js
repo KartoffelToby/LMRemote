@@ -157,9 +157,8 @@ var LMRemote = {
 							musicArray[i+2] = 255;
 						}
 					}
-					
-					ledController.sendRgbBuffer(musicArray);
-				},10);
+					LMRemote.sendColor(true,musicArray,function(){});
+				},50);
 			default:
 				this.clearAll();
 				break;
