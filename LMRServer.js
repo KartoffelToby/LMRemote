@@ -111,28 +111,28 @@ var LMRemote = {
 								musicArray[i+2] = 0;
 							}
 						//}
-						if (temp == 4 || temp == 6 || temp == 8) {
+						if (temp >= 20 && temp <= 40) {
 							for (var i = 0; i < multiplikator; i+=3) {
 								musicArray[i] = 255;
 								musicArray[i+1] = 0;
 								musicArray[i+2] = 0;
 							}
 						}
-						else if (temp >= 12 && temp <= 15) {
+						else if (temp >= 100 && temp <= 150) {
 							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 255;
 								musicArray[i+2] = 0;
 							}
 						}
-						else if (temp > 15 && temp < 80) {
+						else if (temp >= 1000 && temp <= 2000) {
 							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
 								musicArray[i] = 0;
 								musicArray[i+1] = 0;
 								musicArray[i+2] = 255;
 							}
 						}
-						else if (temp > 90) {
+						else if (temp >= 6000 && temp <= 10000) {
 							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
 								musicArray[i] = 255;
 								musicArray[i+1] = 255;
