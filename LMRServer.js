@@ -107,7 +107,6 @@ var LMRemote = {
 				setTimeout(function(){
 					var temp = data.array;
 					if (temp >= 20 && temp <= 40) {
-						stacksG = 0;
 						stacksR++;
 						if(stacksR > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
@@ -135,7 +134,6 @@ var LMRemote = {
 						}
 					}
 					else if (temp >= 100 && temp <= 150) {
-						stacksR = 0;
 						stacksG++;
 						if(stacksG > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
@@ -163,8 +161,6 @@ var LMRemote = {
 						}
 					}
 					else if (temp >= 500 && temp <= 800) {
-						stacksR = 0;
-						stacksG = 0;
 						stacksB++;
 						if(stacksB > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
@@ -192,9 +188,6 @@ var LMRemote = {
 						}
 					}
 					else if (temp >= 1000 && temp <= 1500) {
-						stacksR = 0;
-						stacksG = 0;
-						stacksB = 0;
 						stacksW++;
 						if(stacksW > 1){
 							for (var i = 0; i < multiplikator*4; i+=3) {
