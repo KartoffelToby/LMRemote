@@ -116,7 +116,6 @@ var LMRemote = {
 						musicArray[i+1] = 0;
 						musicArray[i+2] = 0;
 					}
-					ledController.sendRgbBuffer(musicArray);
 					if(temp == 0){
 						stacksG = 0;
 						stacksB = 0;
