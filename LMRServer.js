@@ -133,12 +133,14 @@ var LMRemote = {
 								musicArray[i+2] = temp.one*2.55;
 							}
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}else{
 						for (var i = 0; i < multiplikator; i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					if (temp.two > 0) {
 						stacksR = 0;
@@ -162,12 +164,14 @@ var LMRemote = {
 								musicArray[i+2] = temp.two*2.55;
 							}
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}else{
 						for (var i = multiplikator; i < (multiplikator*2); i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					if (temp.three > 0) {
 						stacksG = 0;
@@ -191,12 +195,14 @@ var LMRemote = {
 								musicArray[i+2] = temp.three*2.55;
 							}
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}else{
 						for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}
 					if (temp.four > 0) {
 						stacksG = 0;
@@ -220,15 +226,16 @@ var LMRemote = {
 								musicArray[i+2] = temp.four*2.55;
 							}
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}else{
 						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
 						}
+						ledController.sendRgbBuffer(musicArray);
 					}
-					ledController.sendRgbBuffer(musicArray);
-				},2);
+				},5);
 			default:
 				this.clearAll();
 				break;
