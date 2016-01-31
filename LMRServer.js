@@ -111,18 +111,8 @@ var LMRemote = {
 			case "array":
 				setTimeout(function(){
 					var temp = data;
-					if(temp == 0){
-						stacksG = 0;
-						stacksB = 0;
-						stacksW = 0;
-						stacksR = 0;
-						for (var i = 0; i < multiplikator*4; i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 0;
-						}
-						ledController.sendRgbBuffer(musicArray);
-					}
+
+					console.log(temp.one);
 					if (temp.one >= 80) {
 						stacksG = 0;
 						stacksB = 0;
