@@ -113,7 +113,7 @@ var LMRemote = {
 					var temp = data;
 
 					console.log(temp.one);
-					if (temp.one >= 80) {
+					if (temp.one > 0) {
 						stacksG = 0;
 						stacksB = 0;
 						stacksW = 0;
@@ -131,9 +131,9 @@ var LMRemote = {
 							stacksR = 0;
 						}else{
 							for (var i = 0; i < multiplikator; i+=3) {
-								musicArray[i] = 255;
-								musicArray[i+1] = 0;
-								musicArray[i+2] = 0;
+								musicArray[i] = temp.one*2.55;
+								musicArray[i+1] = temp.one*2.55;
+								musicArray[i+2] = temp.one*2.55;
 							}
 							ledController.sendRgbBuffer(musicArray);
 						}
