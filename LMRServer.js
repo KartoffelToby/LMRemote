@@ -127,10 +127,14 @@ var LMRemote = {
 							}
 							stacksR = 0;
 						}else{
+							var temp1 = Tools.randomInt(0,temp.one*2.55);
+							var temp2 = Tools.randomInt(0,temp.one*2.55)
+							var temp3 = Tools.randomInt(0,temp.one*2.55)
+
 							for (var i = 0; i < multiplikator; i+=3) {
-								musicArray[i] = Tools.randomInt(0,temp.one*2.55);
-								musicArray[i+1] = Tools.randomInt(0,temp.one*2.55);
-								musicArray[i+2] = Tools.randomInt(0,temp.one*2.55);
+								musicArray[i] = temp1;
+								musicArray[i+1] = temp2;
+								musicArray[i+2] = temp3;
 							}
 						}
 					}else{
