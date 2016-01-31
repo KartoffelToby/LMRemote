@@ -112,30 +112,14 @@ var LMRemote = {
 				setTimeout(function(){
 					var temp = data;
 					if (temp.one > 0) {
-						stacksG = 0;
-						stacksB = 0;
-						stacksW = 0;
-						stacksR++;
-						if(stacksR > 1){
-							var temp1 = Tools.randomInt(0,255);
-							var temp2 = Tools.randomInt(0,255);
-							var temp3 = Tools.randomInt(0,255);
-							for (var i = 0; i < multiplikator; i+=3) {
-								musicArray[i] = temp1;
-								musicArray[i+1] = temp2;
-								musicArray[i+2] = temp3;
-							}
-							stacksR = 0;
-						}else{
-							var temp1 = Tools.randomInt(0,temp.one*2.55);
-							var temp2 = Tools.randomInt(0,temp.one*2.55)
-							var temp3 = Tools.randomInt(0,temp.one*2.55)
+						var temp1 = Tools.randomInt(0,temp.one*2.55);
+						var temp2 = Tools.randomInt(0,temp.one*2.55)
+						var temp3 = Tools.randomInt(0,temp.one*2.55)
 
-							for (var i = 0; i < multiplikator; i+=3) {
-								musicArray[i] = temp1;
-								musicArray[i+1] = temp2;
-								musicArray[i+2] = temp3;
-							}
+						for (var i = 0; i < multiplikator; i+=3) {
+							musicArray[i] = temp1;
+							musicArray[i+1] = temp2;
+							musicArray[i+2] = temp3;
 						}
 					}else{
 						for (var i = 0; i < multiplikator; i+=3) {
@@ -145,26 +129,14 @@ var LMRemote = {
 						}
 					}
 					if (temp.two > 0) {
-						stacksR = 0;
-						stacksB = 0;
-						stacksW = 0;
-						stacksG++;
-						if(stacksG > 1){
-							var temp1 = Tools.randomInt(0,255);
-							var temp2 = Tools.randomInt(0,255);
-							var temp3 = Tools.randomInt(0,255);
-							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
-								musicArray[i] = temp1;
-								musicArray[i+1] = temp2;
-								musicArray[i+2] = temp3;
-							}
-							stacksG = 0;
-						}else{
-							for (var i = multiplikator; i < (multiplikator*2); i+=3) {
-								musicArray[i] = temp.two*2.55;
-								musicArray[i+1] = temp.two*2.55;
-								musicArray[i+2] = temp.two*2.55;
-							}
+						var temp1 = Tools.randomInt(0,temp.two*2.55);
+						var temp2 = Tools.randomInt(0,temp.two*2.55)
+						var temp3 = Tools.randomInt(0,temp.two*2.55)
+
+						for (var i = multiplikator; i < (multiplikator*2); i+=3) {
+							musicArray[i] = temp1;
+							musicArray[i+1] = temp2;
+							musicArray[i+2] = temp3;
 						}
 					}else{
 						for (var i = multiplikator; i < (multiplikator*2); i+=3) {
@@ -174,26 +146,14 @@ var LMRemote = {
 						}
 					}
 					if (temp.three > 0) {
-						stacksG = 0;
-						stacksR = 0;
-						stacksW = 0;
-						stacksB++;
-						if(stacksB > 1){
-							var temp1 = Tools.randomInt(0,255);
-							var temp2 = Tools.randomInt(0,255);
-							var temp3 = Tools.randomInt(0,255);
-							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
-								musicArray[i] = temp1;
-								musicArray[i+1] = temp2;
-								musicArray[i+2] = temp3;
-							}
-							stacksB = 0;
-						}else{
-							for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
-								musicArray[i] = temp.three*2.55;
-								musicArray[i+1] = temp.three*2.55;
-								musicArray[i+2] = temp.three*2.55;
-							}
+						var temp1 = Tools.randomInt(0,temp.three*2.55);
+						var temp2 = Tools.randomInt(0,temp.three*2.55)
+						var temp3 = Tools.randomInt(0,temp.three*2.55)
+
+						for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
+							musicArray[i] = temp1;
+							musicArray[i+1] = temp2;
+							musicArray[i+2] = temp3;
 						}
 					}else{
 						for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
@@ -203,26 +163,14 @@ var LMRemote = {
 						}
 					}
 					if (temp.four > 0) {
-						stacksG = 0;
-						stacksB = 0;
-						stacksR = 0;
-						stacksW++;
-						if(stacksW > 1){
-							var temp1 = Tools.randomInt(0,255);
-							var temp2 = Tools.randomInt(0,255);
-							var temp3 = Tools.randomInt(0,255);
-							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
-								musicArray[i] = temp1;
-								musicArray[i+1] = temp2;
-								musicArray[i+2] = temp3;
-							}
-							stacksW = 0;
-						}else{
-							for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
-								musicArray[i] = temp.four*2.55;
-								musicArray[i+1] = temp.four*2.55;
-								musicArray[i+2] = temp.four*2.55;
-							}
+						var temp1 = Tools.randomInt(0,temp.four*2.55);
+						var temp2 = Tools.randomInt(0,temp.four*2.55)
+						var temp3 = Tools.randomInt(0,temp.four*2.55)
+
+						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
+							musicArray[i] = temp1;
+							musicArray[i+1] = temp2;
+							musicArray[i+2] = temp3;
 						}
 					}else{
 						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
