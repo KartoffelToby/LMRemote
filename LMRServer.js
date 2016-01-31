@@ -110,12 +110,7 @@ var LMRemote = {
 				break;
 			case "array":
 				setTimeout(function(){
-					var temp = data.array;
-					for (var i = 0; i < multiplikator*4; i+=3) {
-						musicArray[i] = 0;
-						musicArray[i+1] = 0;
-						musicArray[i+2] = 0;
-					}
+					var temp = data;
 					if(temp == 0){
 						stacksG = 0;
 						stacksB = 0;
@@ -128,7 +123,7 @@ var LMRemote = {
 						}
 						ledController.sendRgbBuffer(musicArray);
 					}
-					else if (temp >= 20 && temp <= 40) {
+					if (temp.one >= 80) {
 						stacksG = 0;
 						stacksB = 0;
 						stacksW = 0;
@@ -152,8 +147,15 @@ var LMRemote = {
 							}
 							ledController.sendRgbBuffer(musicArray);
 						}
+					}else{
+						for (var i = 0; i < multiplikator; i+=3) {
+							musicArray[i] = 0;
+							musicArray[i+1] = 0;
+							musicArray[i+2] = 0;
+						}
+						ledController.sendRgbBuffer(musicArray);	
 					}
-					else if (temp >= 100 && temp <= 150) {
+					if (temp.two >= 80) {
 						stacksR = 0;
 						stacksB = 0;
 						stacksW = 0;
@@ -177,8 +179,15 @@ var LMRemote = {
 							}
 							ledController.sendRgbBuffer(musicArray);
 						}
+					}else{
+						for (var i = multiplikator; i < (multiplikator*2); i+=3) {
+							musicArray[i] = 0;
+							musicArray[i+1] = 0;
+							musicArray[i+2] = 0;
+						}
+						ledController.sendRgbBuffer(musicArray);	
 					}
-					else if (temp >= 500 && temp <= 800) {
+					if (temp.three >= 80) {
 						stacksG = 0;
 						stacksR = 0;
 						stacksW = 0;
@@ -202,8 +211,15 @@ var LMRemote = {
 							}
 							ledController.sendRgbBuffer(musicArray);
 						}
+					}else{
+						for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
+							musicArray[i] = 0;
+							musicArray[i+1] = 0;
+							musicArray[i+2] = 0;
+						}
+						ledController.sendRgbBuffer(musicArray);			
 					}
-					else if (temp >= 1000 && temp <= 1500) {
+					if (temp.four >= 80) {
 						stacksG = 0;
 						stacksB = 0;
 						stacksR = 0;
@@ -227,6 +243,13 @@ var LMRemote = {
 							}
 							ledController.sendRgbBuffer(musicArray);
 						}
+					}else{
+						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
+							musicArray[i] = 0;
+							musicArray[i+1] = 0;
+							musicArray[i+2] = 0;
+						}
+						ledController.sendRgbBuffer(musicArray);		
 					}
 				},5);
 			default:
