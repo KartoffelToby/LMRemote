@@ -30,9 +30,9 @@ process.on( 'SIGINT', function() {
   ledController.disconnect();
   process.exit( )
 })
-var multiplikator = Math.round(maxLED/4)*3;
-var musicArray = new Buffer(multiplikator*4);
-for (var i = 0; i < multiplikator*4; i+=3) {
+var multiplikator = Math.round(maxLED/3)*3;
+var musicArray = new Buffer(multiplikator*3);
+for (var i = 0; i < multiplikator*3; i+=3) {
 	musicArray[i] = 0;
 	musicArray[i+1] = 0;
 	musicArray[i+2] = 0;
@@ -157,23 +157,6 @@ var LMRemote = {
 						}
 					}else{
 						for (var i = (multiplikator*2); i < (multiplikator*3); i+=3) {
-							musicArray[i] = 0;
-							musicArray[i+1] = 0;
-							musicArray[i+2] = 0;
-						}
-					}
-					if (temp.four > 0) {
-						var temp1 = Tools.randomInt(0,temp.four*2.55);
-						var temp2 = Tools.randomInt(0,temp.four*2.55)
-						var temp3 = Tools.randomInt(0,temp.four*2.55)
-
-						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
-							musicArray[i] = temp1;
-							musicArray[i+1] = temp2;
-							musicArray[i+2] = temp3;
-						}
-					}else{
-						for (var i = (multiplikator*3); i < (multiplikator*4); i+=3) {
 							musicArray[i] = 0;
 							musicArray[i+1] = 0;
 							musicArray[i+2] = 0;
