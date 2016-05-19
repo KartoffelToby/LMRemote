@@ -46,10 +46,9 @@ var sunset = times.sunset;
 console.log(times.sunset);
 
 
-Effects.fire();
-
 // APP CONNECTION
 io.on('connection', function (socket) {
+	Effects.fire();
 	socket.emit('connected', { hello: 'world' });
 	socket.on('color', function (data) {
 		LMRemote.color(data);
@@ -520,11 +519,16 @@ var Effects = {
 	},
 	nightsky : function(){
 		var tempArray = Array();
-		for (var i = maxLED; i >= 0; i--) {
-			tempArray.push(41);
-			tempArray.push(86);
-			tempArray.push(143);
-		}
+			for (var i = maxLED; i >= 0; i--) {
+				if(Tools.randomBoolean()){
+					tempArray.push(41);
+					tempArray.push(86);
+					tempArray.push(143);
+				}else{
+					tempArray.push(255);
+					tempArray.push(255);
+					tempArray.push(255);				}
+			};
 		LMRemote.sendColor(true,tempArray,function(){});
 		interval = setInterval(function() {
 			var byteArray = Array();
