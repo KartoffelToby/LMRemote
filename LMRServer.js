@@ -47,20 +47,22 @@ var sunset = times.sunset;
 
 // APP CONNECTION
 io.on('connection', function (socket) {
-	Effects.fire();
 	socket.emit('connected', { hello: 'world' });
 	socket.on('color', function (data) {
 		LMRemote.color(data);
 	});
 	socket.on('effect', function (data) {
+		LMRemote.clearAll();
 		LMRemote.effect(data);
 	});
 	socket.on('auto', function (data) {
+		LMRemote.clearAll();
 		LMRemote.automation(data);
 	});
 	socket.on('timer', function (data) {
 	});
 	socket.on('defaultColor', function () {
+		LMRemote.clearAll();
 		LMRemote.setDefaultColor();
 	});
 	socket.on('notify', function (data) {
@@ -487,7 +489,7 @@ var Effects = {
 					amplitudePhase = (amplitudePhase + amplitudePhaseIncrement) % (2*Math.PI);
 					tempColor = [];
 					colors = [];
-		},8);
+		},5);
 	},
 	notify : function(color){
 		var half = maxLED / 2;
