@@ -517,21 +517,23 @@ var Effects = {
 
 	},
 	nightsky : function(){
-		var byteArray = Array();
-		for (var i = maxLED; i >= 0; i--) {
-			if(Tools.randomBoolean()){
-				byteArray.push(41);
-				byteArray.push(86);
-				byteArray.push(143);
-			}else{
-				byteArray.push(255);
-				byteArray.push(255);
-				byteArray.push(255);				
-			}
-		};
-		LMRemote.sendColor(true,byteArray,function(){});
+		setTimeout(function(){
+			var byteArray = Array();
+			for (var i = maxLED; i >= 0; i--) {
+				if(Tools.randomBoolean()){
+					byteArray.push(41);
+					byteArray.push(86);
+					byteArray.push(143);
+				}else{
+					byteArray.push(255);
+					byteArray.push(255);
+					byteArray.push(255);				
+				}
+			};
+			LMRemote.sendColor(true,byteArray,function(){});
+		}, 5);
 		interval = setInterval(function() {
-			byteArray = Array();
+			var byteArray = Array();
 			for (var i = maxLED; i >= 0; i--) {
 				if(Tools.randomBoolean()){
 					byteArray.push(41);
@@ -592,6 +594,6 @@ var Tools = {
 		return Math.floor(Math.random() * (high - low) + low);
 	},
 	randomBoolean : function(){
-		return Math.random() < 0.46;
+		return Math.random() < 0.98;
 	}
 }
