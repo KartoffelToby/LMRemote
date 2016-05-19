@@ -91,7 +91,7 @@ var LMRemote = {
 	},
 	effect : function(data){
 		this.clearAll();
-		this.clearColor
+		//this.clearColor
 		switch(data.name){
 			case "clock":
 				Effects.clock();
@@ -110,6 +110,9 @@ var LMRemote = {
 				break;
 			case "nightsky":
 				Effects.nightsky();
+				break;
+			case "fire":
+				Effects.fire();
 				break;
 			case "array":
 				setTimeout(function(){
