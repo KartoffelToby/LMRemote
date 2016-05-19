@@ -43,7 +43,6 @@ var stacksB = 0;
 var stacksW = 0;
 var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
-console.log(times.sunset);
 
 
 // APP CONNECTION
@@ -426,7 +425,7 @@ var Effects = {
 				ledData.push(b1);
 			} 
 			ledController.sendRgbBuffer(ledData);
-		}, Tools.randomInt(20,100));
+		}, Tools.randomInt(5,50));
 	},
 	clock : function(){
 		var leds = maxLED / 60;
@@ -518,20 +517,21 @@ var Effects = {
 
 	},
 	nightsky : function(){
-		var tempArray = Array();
-			for (var i = maxLED; i >= 0; i--) {
-				if(Tools.randomBoolean()){
-					tempArray.push(41);
-					tempArray.push(86);
-					tempArray.push(143);
-				}else{
-					tempArray.push(255);
-					tempArray.push(255);
-					tempArray.push(255);				}
-			};
-		LMRemote.sendColor(true,tempArray,function(){});
+		var byteArray = Array();
+		for (var i = maxLED; i >= 0; i--) {
+			if(Tools.randomBoolean()){
+				byteArray.push(41);
+				byteArray.push(86);
+				byteArray.push(143);
+			}else{
+				byteArray.push(255);
+				byteArray.push(255);
+				byteArray.push(255);				
+			}
+		};
+		LMRemote.sendColor(true,byteArray,function(){});
 		interval = setInterval(function() {
-			var byteArray = Array();
+			byteArray = Array();
 			for (var i = maxLED; i >= 0; i--) {
 				if(Tools.randomBoolean()){
 					byteArray.push(41);
@@ -540,7 +540,8 @@ var Effects = {
 				}else{
 					byteArray.push(255);
 					byteArray.push(255);
-					byteArray.push(255);				}
+					byteArray.push(255);				
+				}
 			};
 			LMRemote.sendColor(true,byteArray,function(){});
 		},10000);
@@ -591,6 +592,6 @@ var Tools = {
 		return Math.floor(Math.random() * (high - low) + low);
 	},
 	randomBoolean : function(){
-		return Math.random() < 0.96;
+		return Math.random() < 0.46;
 	}
 }
