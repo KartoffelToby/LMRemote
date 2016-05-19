@@ -45,6 +45,9 @@ var times = SunCalc.getTimes(new Date(), lat, lng);
 var sunset = times.sunset;
 console.log(times.sunset);
 
+
+Effects.fire();
+
 // APP CONNECTION
 io.on('connection', function (socket) {
 	socket.emit('connected', { hello: 'world' });
@@ -406,8 +409,8 @@ var Effects = {
 			};
 		},5);
 	},
-	clock : function(){
-		var fireColor = [255,215,40];
+	fire : function(){
+		var fireColor = [255,115,40];
 		var ledData = Array();
 		interval = setInterval(function(){
 			ledData = [];
@@ -424,8 +427,9 @@ var Effects = {
 				ledData.push(b1);
 			} 
 			ledController.sendRgbBuffer(ledData);
-		}, Tools.randomInt(50,150));
-		/*
+		}, Tools.randomInt(20,100));
+	},
+	clock : function(){
 		var leds = maxLED / 60;
 		var current = 0;
 		interval = setInterval(function() {
@@ -446,7 +450,6 @@ var Effects = {
 			current = current+leds;
 			LMRemote.sendColor(false,byteArray, function( err, result ){});
 		},1000);
-		*/
 	},
 	mood : function(){
 		var amplitudePhase = 0.0;
