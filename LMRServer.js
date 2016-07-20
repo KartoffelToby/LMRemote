@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
 		LMRemote.color(data);
 	});
 	socket.on('colorarray', function (data) {
-		ledController.sendRgbBuffer(data.stream);
+		LMRemote.sendColor(true,data.stream);
 	});
 	socket.on('effect', function (data) {
 		LMRemote.clearAll();
