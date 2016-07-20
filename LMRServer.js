@@ -51,6 +51,9 @@ io.on('connection', function (socket) {
 	socket.on('color', function (data) {
 		LMRemote.color(data);
 	});
+	socket.on('colorarray', function (data) {
+		LMRemote.sendColor(true,data);
+	});
 	socket.on('effect', function (data) {
 		LMRemote.clearAll();
 		LMRemote.effect(data);
